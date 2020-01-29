@@ -1,4 +1,4 @@
-#Latency Check
+# Latency Check
 Example:<br>
 *config.yaml*
 ```
