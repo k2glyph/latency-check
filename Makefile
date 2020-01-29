@@ -1,8 +1,9 @@
 PROJECT_NAME = latency
+TAG_NAME = latency
 install:
 	@GO111MODULE=on; go mod tidy
 build:
-	GOOS=linux go build -o main
+	GOOS=linux go build -o ${PROJECT_NAME}
 
 test:
 	@go test -v main_test.go
