@@ -7,11 +7,14 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o latency .
 
 FROM alpine:3.10  
 
 RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
-COPY --from=builder /app/main .
+COPY --from=builder /app/latency .
+COPY --from=builder /app/run.sql .
+COPY --from=builder /app/drain.sql .
+
